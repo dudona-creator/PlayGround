@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#070a12" />
+  <title>NEON REBELLION — The city belongs to them.</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23070a12'/%3E%3Cpath d='M14 12h10l10 14 10-14h10L39 32l15 20H43L34 37 25 52H14l15-20z' fill='%2314e5db'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"}}</script>
+</head>
+<body>
+  <main id="game-shell">
+    <canvas id="game"></canvas>
+    <div class="scanlines"></div><div class="vignette"></div>
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">N<span>R</span></span><div><div class="brand-name">NEON <b>REBELLION</b></div><div class="brand-sub">DISTRICT ZERO // 2189</div></div></div>
+      <div class="region-chip"><i></i><span id="region-name">DISTRICT ZERO</span><small>LOWER CITY</small></div>
+      <div class="top-actions"><span class="clock-label">LOCAL TIME</span><span id="clock">23:48</span><button id="map-button" class="icon-button" title="Map [M]">⌖ <small>MAP</small></button><button id="pause-button" class="icon-button" title="Pause [Esc]">Ⅱ <small>PAUSE</small></button></div>
+    </header>
+    <section class="mission-card"><div class="eyebrow"><span class="live-dot"></span> ACTIVE OBJECTIVE</div><div class="mission-title" id="mission-title">ASHES OF HOME</div><div class="mission-copy" id="mission-copy">Find the source of the signal in the ruins.</div><div class="objective-row"><span class="objective-marker">◈</span><span id="objective-text">Investigate the burned shelter</span><span id="objective-distance">48m</span></div></section>
+    <div class="crosshair"><i></i><i></i></div>
+    <div class="interaction-prompt" id="interaction-prompt"><kbd>E</kbd><span>INTERACT</span></div>
+    <div class="toast" id="toast"></div>
+    <section class="status-panel"><div class="status-head"><span>VITALS</span><span id="condition">STABLE</span></div><div class="meter"><div class="meter-label"><span>♥ &nbsp;HEALTH</span><b id="health-value">100</b></div><div class="meter-track"><i id="health-bar" class="health"></i></div></div><div class="meter"><div class="meter-label"><span>⌁ &nbsp;STAMINA</span><b id="stamina-value">100</b></div><div class="meter-track"><i id="stamina-bar" class="stamina"></i></div></div><div class="survival-row"><div class="mini-meter"><span>◉ HYDRATION</span><div class="meter-track"><i id="thirst-bar" class="thirst"></i></div><b id="thirst-value">84%</b></div><div class="mini-meter"><span>◈ NOURISHMENT</span><div class="meter-track"><i id="hunger-bar" class="hunger"></i></div><b id="hunger-value">72%</b></div></div><div class="status-foot"><span>◌ <b id="armor-value">0</b> ARMOR</span><span>DAY 01 · 2189</span></div></section>
+    <section class="inventory-strip"><div class="strip-title">FIELD KIT <span>[ I ]</span></div><div class="quick-items" id="quick-items"></div></section>
+    <div class="weapon-hud"><div class="weapon-icon">⌁</div><div><b id="weapon-name">SCRAP PISTOL</b><span id="ammo-count">12 <i>/</i> 36</span></div><div class="reload-key">R</div></div>
+    <div class="compass"><span class="compass-line"></span><span>N</span><span>NE</span><span>E</span><span>SE</span><span>S</span></div>
+    <div class="objective-marker-world" id="world-marker">◇<span>?</span></div>
+    <div class="controls-hint"><span>WASD <i>MOVE</i></span><span>SHIFT <i>SPRINT</i></span><span>SPACE <i>JUMP</i></span><span>RMB <i>AIM</i></span><span>LMB <i>FIRE</i></span></div>
+    <div class="touch-controls" id="touch-controls"><div class="joy-zone"><div class="joy-base"><div class="joy-knob"></div></div></div><div class="touch-actions"><button data-action="interact">E</button><button data-action="jump">↑</button><button data-action="sprint">RUN</button><button data-action="fire">✦</button></div></div>
+    <div class="overlay" id="overlay"><div class="modal-panel" id="modal-content"></div></div>
+    <div class="intro" id="intro"><div class="intro-bg"></div><div class="intro-content"><div class="intro-kicker"><span></span> NEXUS CONTROL NETWORK // BREACH DETECTED</div><div class="intro-logo">NEON<br><em>REBELLION</em></div><p class="tagline">THE CITY BELONGS TO THEM.<br><b>THE FUTURE BELONGS TO US.</b></p><div class="intro-rule"></div><p class="intro-story">YEAR 2189. NEXUS took the water. The power. The air.<br>Last night, they took your home. In the ashes, you found a secret:<br><span>PROJECT REBIRTH IS REAL.</span></p><button id="start-button" class="primary-button">ENTER THE CITY <span>→</span></button><div class="intro-foot">A SURVIVAL RPG · DISTRICT ZERO · BUILD 01.08.89</div></div><div class="intro-coordinate">33° 41' N<br>118° 09' W</div></div>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
