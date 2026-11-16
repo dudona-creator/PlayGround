@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#dff4e8" />
+  <title>Terra Hexa — a tiny world, your way</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main id="game-shell">
+    <div id="world-stage">
+      <div id="scene-mount"></div>
+      <div class="sky-glow"></div>
+      <header class="topbar">
+        <button class="brand-mark" id="home-button" aria-label="Home"><span class="brand-icon">✿</span><span class="brand-copy"><b>TERRA</b><small>HEXA</small></span></button>
+        <div class="player-chip"><span class="avatar">🌱</span><span><b id="player-name">Sprout</b><small><span data-i18n="level">LEVEL</span> <b id="level">1</b> · <span id="xp-label">0 / 100 XP</span></small></span><div class="xp-track"><i id="xp-fill"></i></div></div>
+        <button class="icon-button settings-button" id="settings-button" aria-label="Settings">⚙</button>
+      </header>
+      <section class="resource-rail" aria-label="Resources">
+        <div class="resource-pill coins"><span>🪙</span><b id="coins">120</b><small>+</small></div>
+        <div class="resource-pill"><span>⭐</span><b id="stars">3</b></div>
+        <div class="resource-pill"><span>🪵</span><b id="wood">18</b></div>
+        <div class="resource-pill"><span>🪨</span><b id="stone">12</b></div>
+        <button class="resource-pill more-resources" id="inventory-button"><span>＋</span><b data-i18n="resources">Resources</b></button>
+      </section>
+      <div class="camera-controls">
+        <button class="camera-btn" id="rotate-left" aria-label="Rotate left">↶</button>
+        <button class="camera-btn" id="rotate-right" aria-label="Rotate right">↷</button>
+        <button class="camera-btn" id="zoom-in" aria-label="Zoom in">＋</button>
+        <button class="camera-btn" id="zoom-out" aria-label="Zoom out">−</button>
+      </div>
+      <button class="quest-chip" id="quest-button"><span class="quest-icon">✦</span><span><b data-i18n="dailyQuest">Daily quest</b><small id="quest-progress">Gather 3 resources · 0/3</small></span><span class="quest-arrow">›</span></button>
+      <div class="toast" id="toast"></div>
+      <div class="bottom-dock">
+        <div class="dock-topline"><div><span class="eyebrow" data-i18n="buildYourWorld">BUILD YOUR WORLD</span><b id="action-title" data-i18n="chooseTile">Choose a tile</b></div><button class="dock-menu-button" id="build-menu-button"><span>⌂</span><small data-i18n="build">Build</small></button></div>
+        <div class="tile-selector" id="tile-selector">
+          <button class="tile-option active" data-tile="field"><span class="tile-swatch field-swatch">✿</span><b data-i18n="field">Field</b><small>Free</small></button>
+          <button class="tile-option" data-tile="forest"><span class="tile-swatch forest-swatch">♣</span><b data-i18n="forest">Forest</b><small>🪙 25</small></button>
+          <button class="tile-option" data-tile="water"><span class="tile-swatch water-swatch">〰</span><b data-i18n="water">Water</b><small>🪙 25</small></button>
+          <button class="tile-option" data-tile="farm"><span class="tile-swatch farm-swatch">▤</span><b data-i18n="farm">Farm</b><small>🪙 40</small></button>
+          <button class="tile-option" data-tile="coast"><span class="tile-swatch coast-swatch">☼</span><b data-i18n="coast">Coast</b><small>🪙 35</small></button>
+          <button class="tile-option" data-tile="mountain"><span class="tile-swatch mountain-swatch">▲</span><b data-i18n="mountain">Mountain</b><small>🪙 50</small></button>
+        </div>
+        <div class="dock-footer"><span id="placement-hint" data-i18n="tapWorld">Tap a glowing space to place</span><button class="rotate-tile" id="rotate-tile">⟳ <span data-i18n="rotate">Rotate</span></button><button class="action-chip" id="collect-button">✋ <span data-i18n="gather">Gather</span></button></div>
+      </div>
+      <div class="side-actions"><button id="market-button"><span>🧺</span><small data-i18n="market">Market</small></button><button id="missions-button"><span>📜</span><small data-i18n="missions">Goals</small></button></div>
+      <div id="modal-root"></div>
+      <div class="welcome-overlay" id="welcome-overlay">
+        <div class="welcome-card">
+          <div class="welcome-flower">✿</div><div class="welcome-kicker">A LITTLE WORLD, MADE BY YOU</div>
+          <h1>TERRA<br><span>HEXA</span></h1><p class="welcome-copy">Build a place where every little thing belongs.</p>
+          <div class="preview-world"><div class="preview-hill hill-a"></div><div class="preview-hill hill-b"></div><div class="preview-tree">🌳</div><div class="preview-house">🏡</div><div class="preview-flower flower-a">🌼</div><div class="preview-flower flower-b">🌷</div><div class="preview-water">〰</div></div>
+          <div class="welcome-stats"><span><b id="welcome-level">LEVEL 1</b><small>YOUR ADVENTURE</small></span><span><b id="welcome-tiles">6 TILES</b><small>READY TO EXPLORE</small></span></div>
+          <button class="continue-button" id="continue-button"><span data-i18n="continue">Continue your world</span><b>→</b></button>
+          <button class="new-world-button" id="new-world-button">Start a fresh world</button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
